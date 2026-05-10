@@ -141,47 +141,4 @@
   </script>
 
 </body>
-</html>      border: 1px solid #444;
-    }
-  </style>
-</head>
-<body>
-
-<h2>JSON → Plain Text Converter</h2>
-
-<textarea id="jsonInput" placeholder="Paste JSON here..."></textarea>
-
-<button onclick="convertJSON()">Convert</button>
-
-<pre id="output"></pre>
-
-<script>
-function convertJSON() {
-  try {
-    const data = JSON.parse(document.getElementById("jsonInput").value);
-
-    let text = "";
-
-    function extract(obj, indent = "") {
-      for (let key in obj) {
-        if (typeof obj[key] === "object" && obj[key] !== null) {
-          text += `${indent}${key}:\n`;
-          extract(obj[key], indent + "  ");
-        } else {
-          text += `${indent}${key}: ${obj[key]}\n`;
-        }
-      }
-    }
-
-    extract(data);
-
-    document.getElementById("output").textContent = text;
-
-  } catch (err) {
-    document.getElementById("output").textContent = "Invalid JSON!";
-  }
-}
-</script>
-
-</body>
 </html>
